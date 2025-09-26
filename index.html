@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projeto Final - Gestão de Projetos</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Dashboard - Projeto Final de Gestão</h1>
+      <p>E-commerce Smart - Gestão de Projetos</p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Cronograma do Projeto</h2>
+        <canvas id="cronogramaChart"></canvas>
+      </section>
+
+      <section>
+        <h2>Backlog</h2>
+        <canvas id="backlogChart"></canvas>
+
+        <h3>📋 Detalhamento das Tarefas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th>Responsável</th>
+              <th>Status</th>
+              <th>Risco</th>
+              <th>Probabilidade</th>
+            </tr>
+          </thead>
+          <tbody id="backlog-detalhado">
+            <!-- preenchido via script.js -->
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Riscos</h2>
+        <canvas id="riscosChart"></canvas>
+
+        <h3>⚠️ Detalhamento dos Riscos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Responsável</th>
+              <th>Probabilidade</th>
+              <th>Impacto</th>
+              <th>Status</th>
+              <th>Mitigação</th>
+            </tr>
+          </thead>
+          <tbody id="riscos-detalhados">
+            <!-- preenchido via script.js -->
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>KPIs</h2>
+        <canvas id="kpisChart"></canvas>
+      </section>
+
+      <!-- SEÇÃO DE MONITORAMENTO EM TEMPO REAL -->
+      <section class="monitoramento">
+        <h2>📊 Monitoramento em Tempo Real</h2>
+        <canvas id="monitoramentoChart"></canvas>
+        <p>
+          O gráfico acima simula estoque, vendas e clientes ativos variando em
+          tempo real.
+        </p>
+      </section>
+
+      <section>
+        <h2>Relatórios & Lições Aprendidas</h2>
+        <div class="relatorio">
+          <h3>Relatório de Status</h3>
+          <p>
+            O projeto está em andamento conforme o cronograma. O backlog
+            encontra-se 40% concluído, com foco no desenvolvimento do frontend.
+            Os riscos estão sendo monitorados semanalmente.
+          </p>
+
+          <h3>Lições Aprendidas</h3>
+          <p>
+            - Melhor comunicação entre equipe e cliente.<br />
+            - Maior dedicação na fase de testes.<br />
+            - Importância do uso de ferramentas de versionamento (GitHub).
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Trabalho de Gestão de Projetos - ADS - Daniel Andrade</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

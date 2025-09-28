@@ -7,116 +7,33 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <header>
+    <header class="header">
       <div class="container">
         <div class="container-logo">
           <a href="">
-            <img class="logo" src="./assets/LogoBranca.png" alt="">
+            <img class="logo" src="./assets/LogoBranca.png" alt="" />
           </a>
-          <h1>E-commerce Smart - Gestão de Projetos</h1>
+          <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
         </div>
         <div class="container-navegacao">
           <a class="navegacao" href="./backlog.html">Backlog</a>
-          <a class="navegacao" href="">Monitoramento</a>
-          <a class="navegacao" href="">Relatorio</a>
-          <a class="navegacao" href="">Cronograma</a>
+          <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
+          <a class="navegacao" href="./relatorio.html">Relatorio</a>
+          <a class="navegacao" href="./cronograma.html">Cronograma</a>
+          <a class="navegacao" href="./riscos.html">Riscos</a>
         </div>
       </div>
     </header>
 
-    <main>
-      <section>
-        <h2>Cronograma do Projeto</h2>
-        <canvas id="cronogramaChart"></canvas>
-      </section>
-
-      <section>
-        <h2>Backlog</h2>
-        <canvas id="backlogChart"></canvas>
-
-        
-      </section>
-      <section>
-        <h3>📋 Detalhamento das Tarefas</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Tarefa</th>
-              <th>Responsável</th>
-              <th>Status</th>
-              <th>Risco</th>
-              <th>Probabilidade</th>
-            </tr>
-          </thead>
-          <tbody id="backlog-detalhado">
-            <!-- preenchido via script.js -->
-          </tbody>
-        </table>
-      </section>
-
-
-
-      <section>
-        <h2>Riscos</h2>
-        <canvas id="riscosChart"></canvas>
-
-        <h3>⚠️ Detalhamento dos Riscos</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Responsável</th>
-              <th>Probabilidade</th>
-              <th>Impacto</th>
-              <th>Status</th>
-              <th>Mitigação</th>
-            </tr>
-          </thead>
-          <tbody id="riscos-detalhados">
-            <!-- preenchido via script.js -->
-          </tbody>
-        </table>
-      </section>
-
-      <section>
-        <h2>KPIs</h2>
-        <canvas id="kpisChart"></canvas>
-      </section>
-
-      <!-- SEÇÃO DE MONITORAMENTO EM TEMPO REAL -->
-      <section class="monitoramento">
-        <h2>📊 Monitoramento em Tempo Real</h2>
-        <canvas id="monitoramentoChart"></canvas>
-        <p>
-          O gráfico acima simula estoque, vendas e clientes ativos variando em
-          tempo real.
-        </p>
-      </section>
-
-      <section>
-        <h2>Relatórios & Lições Aprendidas</h2>
-        <div class="relatorio">
-          <h3>Relatório de Status</h3>
-          <p>
-            O projeto está em andamento conforme o cronograma. O backlog
-            encontra-se 40% concluído, com foco no desenvolvimento do frontend.
-            Os riscos estão sendo monitorados semanalmente.
-          </p>
-
-          <h3>Lições Aprendidas</h3>
-          <p>
-            - Melhor comunicação entre equipe e cliente.<br />
-            - Maior dedicação na fase de testes.<br />
-            - Importância do uso de ferramentas de versionamento (GitHub).
-          </p>
-        </div>
-      </section>
-    </main>
+    <main></main>
 
     <footer>
-      <p>Trabalho de Gestão de Projetos - ADS - Daniel Andrade</p>
+      <p>
+        Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel Leite,
+        Matheus Campos
+      </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

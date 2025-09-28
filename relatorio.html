@@ -21,36 +21,31 @@
           <a class="navegacao" href="./backlog.html">Backlog</a>
           <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
           <a class="navegacao" href="./relatorio.html">Relatorio</a>
-          <a class="navegacao" href="">Cronograma</a>
+          <a class="navegacao" href="./cronograma.html">Cronograma</a>
           <a class="navegacao" href="./riscos.html">Riscos</a>
         </div>
       </div>
     </header>
 
     <main>
-      <div class="content">
-        <section>
-          <h2>Backlog</h2>
-          <canvas id="backlogChart"></canvas>
-        </section>
-        <section>
-          <h3>📋 Detalhamento das Tarefas</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Tarefa</th>
-                <th>Responsável</th>
-                <th>Status</th>
-                <th>Risco</th>
-                <th>Probabilidade</th>
-              </tr>
-            </thead>
-            <tbody id="backlog-detalhado">
-              <!-- preenchido via script.js -->
-            </tbody>
-          </table>
-        </section>
-      </div>
+      <section>
+        <h2>Relatórios & Lições Aprendidas</h2>
+        <div class="relatorio">
+          <h3>Relatório de Status</h3>
+          <p>
+            O projeto está em andamento conforme o cronograma. O backlog
+            encontra-se 40% concluído, com foco no desenvolvimento do frontend.
+            Os riscos estão sendo monitorados semanalmente.
+          </p>
+
+          <h3>Lições Aprendidas</h3>
+          <p>
+            - Melhor comunicação entre equipe e cliente.<br />
+            - Maior dedicação na fase de testes.<br />
+            - Importância do uso de ferramentas de versionamento (GitHub).
+          </p>
+        </div>
+      </section>
     </main>
     <footer>
       <p>
@@ -58,6 +53,6 @@
         Matheus Campos
       </p>
     </footer>
-    <script src="./scripts/backlog.js"></script>
+    <script src="./scripts/relatorio.js"></script>
   </body>
 </html>

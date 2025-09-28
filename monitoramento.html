@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="header">
       <div class="container">
         <div class="container-logo">
           <a href="./index.html">
@@ -21,36 +21,27 @@
           <a class="navegacao" href="./backlog.html">Backlog</a>
           <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
           <a class="navegacao" href="./relatorio.html">Relatorio</a>
-          <a class="navegacao" href="">Cronograma</a>
+          <a class="navegacao" href="./cronograma.html">Cronograma</a>
           <a class="navegacao" href="./riscos.html">Riscos</a>
         </div>
       </div>
     </header>
 
     <main>
-      <div class="content">
-        <section>
-          <h2>Backlog</h2>
-          <canvas id="backlogChart"></canvas>
-        </section>
-        <section>
-          <h3>📋 Detalhamento das Tarefas</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Tarefa</th>
-                <th>Responsável</th>
-                <th>Status</th>
-                <th>Risco</th>
-                <th>Probabilidade</th>
-              </tr>
-            </thead>
-            <tbody id="backlog-detalhado">
-              <!-- preenchido via script.js -->
-            </tbody>
-          </table>
-        </section>
-      </div>
+      <section>
+        <h2>KPIs</h2>
+        <canvas id="kpisChart"></canvas>
+      </section>
+
+      <!-- SEÇÃO DE MONITORAMENTO EM TEMPO REAL -->
+      <section class="monitoramento">
+        <h2>📊 Monitoramento em Tempo Real</h2>
+        <canvas id="monitoramentoChart"></canvas>
+        <p>
+          O gráfico acima simula estoque, vendas e clientes ativos variando em
+          tempo real.
+        </p>
+      </section>
     </main>
     <footer>
       <p>
@@ -58,6 +49,6 @@
         Matheus Campos
       </p>
     </footer>
-    <script src="./scripts/backlog.js"></script>
+    <script src="./scripts/monitoramento.js"></script>
   </body>
 </html>

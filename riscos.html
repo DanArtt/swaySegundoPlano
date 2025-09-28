@@ -21,36 +21,34 @@
           <a class="navegacao" href="./backlog.html">Backlog</a>
           <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
           <a class="navegacao" href="./relatorio.html">Relatorio</a>
-          <a class="navegacao" href="">Cronograma</a>
+          <a class="navegacao" href="./cronograma.html">Cronograma</a>
           <a class="navegacao" href="./riscos.html">Riscos</a>
         </div>
       </div>
     </header>
 
     <main>
-      <div class="content">
-        <section>
-          <h2>Backlog</h2>
-          <canvas id="backlogChart"></canvas>
-        </section>
-        <section>
-          <h3>📋 Detalhamento das Tarefas</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Tarefa</th>
-                <th>Responsável</th>
-                <th>Status</th>
-                <th>Risco</th>
-                <th>Probabilidade</th>
-              </tr>
-            </thead>
-            <tbody id="backlog-detalhado">
-              <!-- preenchido via script.js -->
-            </tbody>
-          </table>
-        </section>
-      </div>
+      <section>
+        <h2>Riscos</h2>
+        <canvas id="riscosChart"></canvas>
+
+        <h3>⚠️ Detalhamento dos Riscos</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Responsável</th>
+              <th>Probabilidade</th>
+              <th>Impacto</th>
+              <th>Status</th>
+              <th>Mitigação</th>
+            </tr>
+          </thead>
+          <tbody id="riscos-detalhados">
+            <!-- preenchido via script.js -->
+          </tbody>
+        </table>
+      </section>
     </main>
     <footer>
       <p>
@@ -58,6 +56,6 @@
         Matheus Campos
       </p>
     </footer>
-    <script src="./scripts/backlog.js"></script>
+    <script src="./scripts/riscos.js"></script>
   </body>
 </html>

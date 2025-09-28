@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Final - Gestão de Projetos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="container-logo">
+                <a href="./index.html">
+                    <img class="logo" src="./assets/LogoBranca.png" alt="">
+                </a>
+                <h1>E-commerce Smart - Gestão de Projetos</h1>
+            </div>
+            <div class="container-navegacao">
+                <a class="navegacao" href="./backlog.html">Backlog</a>
+                <a class="navegacao" href="">Monitoramento</a>
+                <a class="navegacao" href="">Relatorio</a>
+                <a class="navegacao" href="">Cronograma</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-backlog">
+            <h2>Backlogs</h2>
+            <div class="content">
+                <section>
+                    <h2>Backlog</h2>
+                    <canvas id="backlogChart"></canvas>
+                </section>
+                <section>
+                    <h3>📋 Detalhamento das Tarefas</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tarefa</th>
+                                <th>Responsável</th>
+                                <th>Status</th>
+                                <th>Risco</th>
+                                <th>Probabilidade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="backlog-detalhado">
+                            <!-- preenchido via script.js -->
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -5,11 +5,38 @@ body {
   color: #333;
 }
 
-header {
-  background: #007bff;
+.container {
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   color: #fff;
-  text-align: center;
-  padding: 20px;
+}
+
+.container-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.container-navegacao {
+  display: flex;
+  gap: 20px;
+}
+
+.navegacao {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.navegacao:hover {
+  text-decoration:underline #888787;
+  color: #888787;
+}
+
+.logo {
+  height: 50px;
 }
 
 main {
@@ -17,6 +44,17 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
+}
+
+.container-backlog {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
 }
 
 section {

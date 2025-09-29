@@ -4,21 +4,21 @@
 const backlogTarefas = [
   {
     tarefa: "Criar tela de login",
-    responsavel: "Ana",
+    responsavel: "Daniel",
     status: "Concluída",
     risco: "Baixa complexidade",
     probabilidade: "Baixa",
   },
   {
     tarefa: "Implementar cadastro de produtos",
-    responsavel: "Bruno",
+    responsavel: "Gabriel",
     status: "Em Andamento",
     risco: "Possível atraso na integração com DB",
     probabilidade: "Média",
   },
   {
     tarefa: "Integrar sistema de pagamento",
-    responsavel: "Carlos",
+    responsavel: "Matheus",
     status: "Pendente",
     risco: "Falha na API de pagamento",
     probabilidade: "Alta",
@@ -32,7 +32,7 @@ const backlogTarefas = [
   },
   {
     tarefa: "Testes de usabilidade",
-    responsavel: "Fernanda",
+    responsavel: "Gabriel",
     status: "Pendente",
     risco: "Feedback negativo dos usuários",
     probabilidade: "Média",

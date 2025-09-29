@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projeto Final - Gestão de Projetos</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/riscos.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
@@ -28,27 +29,31 @@
     </header>
 
     <main>
-      <section>
+      <!-- <section>
         <h2>Riscos</h2>
         <canvas id="riscosChart"></canvas>
-
+      </section> -->
+      <div class="container-table">
+      <section>
         <h3>⚠️ Detalhamento dos Riscos</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Responsável</th>
-              <th>Probabilidade</th>
-              <th>Impacto</th>
-              <th>Status</th>
-              <th>Mitigação</th>
-            </tr>
-          </thead>
-          <tbody id="riscos-detalhados">
-            <!-- preenchido via script.js -->
-          </tbody>
-        </table>
-      </section>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th>Responsável</th>
+                <th>Probabilidade</th>
+                <th>Impacto</th>
+                <th>Status</th>
+                <th>Mitigação</th>
+              </tr>
+            </thead>
+            <tbody id="riscos-detalhados">
+              <!-- preenchido via script.js -->
+            </tbody>
+          </table>
+        </section>
+      </div>
     </main>
     <footer>
       <p>

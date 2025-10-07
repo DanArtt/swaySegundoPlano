@@ -11,7 +11,11 @@ body {
 
 main,
 .rel-section {
-  margin-left: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 150px;
   padding: 2rem;
   min-height: 100vh;
   width: calc(100% - 260px);

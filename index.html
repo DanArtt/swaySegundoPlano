@@ -2,38 +2,198 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>Projeto Final - Gestão de Projetos</title>
+    <title>Dashboard de Gestão - E-commerce Smart</title>
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/orcamento.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <header class="header">
-      <div class="container">
+    <header>
+      <div class="container-navbar">
+        <!-- Topo -->
         <div class="container-logo">
-          <a href="">
-            <img class="logo" src="./assets/LogoBranca.png" alt="" />
+          <a href="./index.html">
+            <img class="logo" src="./assets/LogoBranca.png" alt="Logo" />
           </a>
           <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
         </div>
-        <div class="container-navegacao">
-          <a class="navegacao" href="./backlog.html">Backlog</a>
-          <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
-          <a class="navegacao" href="./relatorio.html">Relatorio</a>
-          <a class="navegacao" href="./cronograma.html">Cronograma</a>
-          <a class="navegacao" href="./riscos.html">Riscos</a>
+
+        <!-- Meio -->
+        <nav class="container-navegacao">
+          <a class="navegacao" href="./relatorio.html">📊 Relatorio</a>
+          <a class="navegacao" href="./monitoramento.html">📡 Monitoramento</a>
+        </nav>
+
+        <!-- Rodapé -->
+        <div class="footer-text">
+          <p>
+            Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel
+            Leite, Matheus Campos
+          </p>
         </div>
       </div>
     </header>
 
-    <main></main>
+    <main class="content">
+      <section class="cards-section">
+        <div class="big-card purple">
+          <div>
+            <h3>⚡ Velocity</h3>
+            <p class="valor">18</p>
+            <span>Média das últimas 3 sprints</span>
+          </div>
+        </div>
+        <div class="big-card blue">
+          <div>
+            <h3>💰 CPI</h3>
+            <p class="valor">1.05</p>
+            <span>Abaixo do custo orçado</span>
+          </div>
+        </div>
+        <div class="big-card green">
+          <div>
+            <h3>⏱️ SPI</h3>
+            <p class="valor">0.98</p>
+            <span>Levemente atrasado</span>
+          </div>
+        </div>
+      </section>
 
-    <footer>
-      <p>
-        Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel Leite,
-        Matheus Campos
-      </p>
-    </footer>
+      <!-- Gráficos -->
+      <section class="charts">
+        <div class="chart-box">
+          <h2>📉 Burndown Chart</h2>
+          <canvas id="burndownChart"></canvas>
+        </div>
+        <div class="chart-box">
+          <h2>🗓️ Cronograma</h2>
+          <canvas id="cronogramaChart"></canvas>
+        </div>
+      </section>
 
-    <script src="./scripts/script.js"></script>
+      <!-- Backlog estilo -->
+      <section class="kanban">
+        <h2>📋 Product Backlog</h2>
+        <div class="kanban-board">
+          <div class="kanban-column">
+            <h3>🔨 Em andamento</h3>
+            <div class="kanban-item high">US-001: Controlar luzes via app</div>
+            <div class="kanban-item medium">
+              US-002: Visualizar temperatura das salas
+            </div>
+          </div>
+          <div class="kanban-column">
+            <h3>📦 Pendente</h3>
+            <div class="kanban-item medium">
+              US-003: Dashboard de consumo de energia
+            </div>
+          </div>
+          <div class="kanban-column">
+            <h3>✅ Concluído</h3>
+            <div class="kanban-item low">US-004: Reservar salas de reunião</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="box orcamento-box">
+  <h2>💰 Painel de Orçamento do Projeto</h2>
+
+  <!-- Resumo em cards -->
+  <div class="orcamento-resumo">
+    <div class="orcamento-card">
+      <h3>Orçamento Total</h3>
+      <p id="orcamento-total">R$ 0,00</p>
+    </div>
+    <div class="orcamento-card">
+      <h3>Gasto Atual</h3>
+      <p id="orcamento-gasto">R$ 0,00</p>
+    </div>
+    <div class="orcamento-card">
+      <h3>Saldo Restante</h3>
+      <p id="orcamento-restante">R$ 0,00</p>
+    </div>
+  </div>
+
+  <!-- Barra de progresso -->
+  <div class="orcamento-progresso-container">
+    <div id="orcamento-progresso" class="orcamento-progresso-barra">0%</div>
+  </div>
+
+  <!-- Tabela detalhada -->
+  <h3>📊 Detalhamento de Custos</h3>
+  <table class="orcamento-tabela">
+    <thead>
+      <tr>
+        <th>Categoria</th>
+        <th>Descrição</th>
+        <th>Valor Diário (R$)</th>
+        <th>Gasto Total (R$)</th>
+      </tr>
+    </thead>
+    <tbody id="tabela-custos"></tbody>
+  </table>
+</section>
+
+
+
+      <!-- Cronograma Detalhado -->
+      <section class="box">
+        <h2>📅 Cronograma</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Etapa</th>
+              <th>Responsável</th>
+              <th>Início</th>
+              <th>Fim</th>
+              <th>Duração (semanas)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="cronograma-detalhado"></tbody>
+        </table>
+      </section>
+
+      <!-- BackLog Detalhado -->
+      <section class="box">
+        <h2>📝 Detalhamento das Tarefas</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tarefa</th>
+              <th>Responsável</th>
+              <th>Status</th>
+              <th>Risco</th>
+              <th>Probabilidade</th>
+            </tr>
+          </thead>
+          <tbody id="backlog-detalhado"></tbody>
+        </table>
+      </section>
+
+      <!-- Riscos -->
+      <section class="box">
+        <h2>⚠️ Matriz de Riscos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Responsável</th>
+              <th>Probabilidade</th>
+              <th>Impacto</th>
+              <th>Status</th>
+              <th>Mitigação</th>
+            </tr>
+            </tr>
+          </thead>
+          <tbody id="riscos-detalhados"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="./scripts/backlog.js"></script>
+    <script src="./scripts/cronograma.js"></script>
+    <script src="./scripts/riscos.js"></script>
+    <script src="./scripts/orcamento.js"></script>
   </body>
 </html>

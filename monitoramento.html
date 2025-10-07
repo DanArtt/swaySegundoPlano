@@ -5,51 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projeto Final - Gestão de Projetos</title>
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/monitoramento.css">
+    <link rel="stylesheet" href="./styles/monitoramento.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
-    <header class="header">
-      <div class="container">
+    <header>
+      <div class="container-navbar">
+        <!-- Topo -->
         <div class="container-logo">
           <a href="./index.html">
-            <img class="logo" src="./assets/LogoBranca.png" alt="" />
+            <img class="logo" src="./assets/LogoBranca.png" alt="Logo" />
           </a>
           <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
         </div>
-        <div class="container-navegacao">
-          <a class="navegacao" href="./backlog.html">Backlog</a>
-          <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
-          <a class="navegacao" href="./relatorio.html">Relatorio</a>
-          <a class="navegacao" href="./cronograma.html">Cronograma</a>
-          <a class="navegacao" href="./riscos.html">Riscos</a>
+
+        <!-- Meio -->
+        <nav class="container-navegacao">
+          <a class="navegacao" href="./index.html">🏠 Dashboard</a>
+          <a class="navegacao" href="./relatorio.html">📊 Relatório</a>
+        </nav>
+
+        <!-- Rodapé -->
+        <div class="footer-text">
+          <p>
+            Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel
+            Leite, Matheus Campos
+          </p>
         </div>
       </div>
     </header>
 
     <main>
-      <section>
-        <h2>KPIs</h2>
-        <canvas id="kpisChart"></canvas>
-      </section>
+      <h2 class="page-title">Dashboard de Indicadores</h2>
 
-      <!-- SEÇÃO DE MONITORAMENTO EM TEMPO REAL -->
-      <section class="monitoramento">
-        <h2>📊 Monitoramento em Tempo Real</h2>
-        <canvas id="monitoramentoChart"></canvas>
-        <p>
-          O gráfico acima simula estoque, vendas e clientes ativos variando em
-          tempo real.
-        </p>
+      <section class="charts-container">
+        <div class="chart-card">
+          <h2>📈 KPIs</h2>
+          <canvas id="kpisChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h2>📊 Monitoramento em Tempo Real</h2>
+          <canvas id="monitoramentoChart"></canvas>
+          <p>
+            O gráfico acima simula estoque, vendas e clientes ativos variando em
+            tempo real.
+          </p>
+        </div>
       </section>
     </main>
-    <footer>
-      <p>
-        Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel Leite,
-        Matheus Campos
-      </p>
-    </footer>
+
     <script src="./scripts/monitoramento.js"></script>
   </body>
 </html>

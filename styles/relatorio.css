@@ -1,26 +1,34 @@
-html, body {
+/* Reset */
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
 }
 
+main,
+.rel-section {
+  margin-left: 260px;
+  padding: 2rem;
+  min-height: 100vh;
+  width: calc(100% - 260px);
+}
 
 .rel-section {
-  padding: 2rem;
-  width: 100vw;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background: #0f172a;
 }
-
 
 .rel-title {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
-  color: #2c3e50;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #38bdf8;
+  text-shadow: 0px 0px 6px rgba(56, 189, 248, 0.3);
 }
-
 
 .rel-botoes {
   display: flex;
@@ -30,21 +38,25 @@ html, body {
 }
 
 .rel-btn {
-  padding: 0.75rem 1.5rem;
-  background-color: #2980b9;
-  color: white;
+  padding: 0.8rem 1.6rem;
+  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+  color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .rel-btn:hover {
-  background-color: #1c5980;
+  background: linear-gradient(135deg, #0284c7, #075985);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
 }
 
-
+/* Container de relatórios */
 .rel-container {
   display: flex;
   flex-wrap: wrap;
@@ -55,28 +67,33 @@ html, body {
   margin: 0 auto;
 }
 
-
+/* Card dos relatórios */
 .rel-card {
-  background-color: #ecf0f1;
-  border-radius: 8px;
-  padding: 1.5rem 2rem;
-  width: 90%;
+  background: #1e293b;
+  border-radius: 14px;
+  padding: 1.8rem 2rem;
+  width: 100%;
   max-width: 1200px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.rel-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+}
 
 .rel-card-title {
   font-size: 1.4rem;
-  color: #34495e;
+  color: #38bdf8;
   margin-bottom: 1rem;
+  border-bottom: 2px solid #38bdf8;
+  padding-bottom: 0.6rem;
 }
-
 
 .rel-saida {
   font-size: 1rem;
-  color: #2c3e50;
+  color: #e2e8f0;
   line-height: 1.6;
 }
 
@@ -90,15 +107,31 @@ html, body {
   list-style-type: disc;
 }
 
-
 .rel-saida .loading {
   font-style: italic;
-  color: #7f8c8d;
+  color: #94a3b8;
   animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-  0%   { opacity: 0.4; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.4; }
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+/* Footer */
+footer {
+  margin-left: 100px;
+  background: #1e293b;
+  text-align: center;
+  padding: 9px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  border-top: 1px solid #334155;
 }

@@ -1,0 +1,98 @@
+/* ============================
+   ORÇAMENTO - Tema escuro elegante
+============================ */
+
+.orcamento-box {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.orcamento-box h2 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+.orcamento-resumo {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.orcamento-card {
+  flex: 1;
+  min-width: 180px;
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #334155;
+  transition: 0.3s ease;
+}
+
+.orcamento-card:hover {
+  transform: translateY(-3px);
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.orcamento-card h3 {
+  color: #94a3b8;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.orcamento-card p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.orcamento-progresso-container {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  height: 24px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.orcamento-progresso-barra {
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 0.85rem;
+  line-height: 24px;
+  border-radius: 10px;
+  transition: width 0.8s ease;
+}
+
+.orcamento-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.orcamento-tabela th,
+.orcamento-tabela td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.orcamento-tabela th {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.orcamento-tabela tr:nth-child(even) {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.orcamento-tabela td {
+  color: #f1f5f9;
+}

@@ -1,99 +1,273 @@
-body {
-  font-family: Arial, sans-serif;
+/* Reset */
+* {
   margin: 0;
-  background: #f4f6f9;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  min-height: 100vh;
 }
 
 header {
-  background-color: #000000;
-  padding: 10px;
-}
-.titulo {
-  font-size: 1rem;
-  color: #fff;
-}
-
-.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 240px;
+  background: linear-gradient(180deg, #0f0f0f, #1e293b);
+  padding: 30px 20px;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.4);
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  color: #fff;
+  flex-direction: column;
+  justify-content: space-between; /* <-- distribui topo / meio / baixo */
+  z-index: 100;
 }
 
+.container-navbar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Topo */
 .container-logo {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 }
 
+/* Meio */
 .container-navegacao {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centraliza verticalmente */
+  flex: 1; /* ocupa o espaço do meio */
   gap: 20px;
 }
 
 .navegacao {
   text-decoration: none;
-  color: #fff;
+  color: #e2e8f0;
   font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s;
+  padding: 10px 14px;
+  border-radius: 8px;
 }
 
 .navegacao:hover {
-  text-decoration: underline #888787;
-  color: #888787;
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  text-shadow: 0px 0px 6px rgba(56, 189, 248, 0.6);
+}
+
+/* Rodapé */
+.footer-text {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: auto; /* empurra para o final */
 }
 
 .logo {
-  height: 25px;
+  height: 35px;
 }
 
-main {
-  padding: 20px;
+.titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #38bdf8;
+  line-height: 1.3;
+}
+
+/* Navegação lateral */
+.container-navegacao {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.navegacao {
+  text-decoration: none;
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.navegacao:hover {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  text-shadow: 0px 0px 6px rgba(56, 189, 248, 0.6);
+}
+
+/* Conteúdo */
+.content {
+  flex: 1;
+  margin-left: 240px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.topbar {
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+.topbar h1 {
+  font-size: 1.6rem;
+  color: #38bdf8;
+}
+
+.topbar p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Cards principais */
+.cards-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.content {
+.big-card {
+  padding: 20px;
+  border-radius: 14px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+}
+
+.big-card:hover {
+  transform: translateY(-3px);
+}
+
+.big-card h3 {
+  margin-bottom: 10px;
+}
+
+.big-card .valor {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.purple {
+  background: linear-gradient(135deg, #7c3aed, #4c1d95);
+}
+.blue {
+  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+}
+.green {
+  background: linear-gradient(135deg, #22c55e, #166534);
+}
+
+.charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 900px;
-  margin-left: 150px;
-  gap: 15px;
+  gap: 20px;
 }
 
-
-
-.container-table {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.chart-box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 14px;
 }
 
-h2 {
-  font-size: 1.2rem;
+.chart-box h2 {
   margin-bottom: 10px;
-  color: #007bff;
+  color: #38bdf8;
 }
 
-.relatorio {
+.kanban {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.kanban h2 {
+  margin-bottom: 15px;
+  color: #38bdf8;
+}
+
+.kanban-board {
+  display: flex;
+  gap: 20px;
+}
+
+.kanban-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.kanban-column h3 {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #f1f5f9;
+}
+
+.kanban-item {
+  padding: 12px;
+  border-radius: 10px;
+  background: #0f172a;
   font-size: 0.95rem;
-  line-height: 1.5;
 }
 
-footer {
-  text-align: center;
-  background: #000000;
-  color: #fff;
-  padding: 10px;
-  margin-top: 20px;
+.high {
+  border-left: 4px solid #ef4444;
+}
+.medium {
+  border-left: 4px solid #facc15;
+}
+.low {
+  border-left: 4px solid #22c55e;
 }
 
-/* Destaque para a seção de monitoramento */
-.monitoramento {
-  border: 2px solid #007bff;
-  background: #eef6ff;
+/* Tabelas */
+.box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 14px;
 }
 
+.box h2 {
+  margin-bottom: 15px;
+  color: #38bdf8;
+}
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+th {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: rgba(56, 189, 248, 0.05);
+}

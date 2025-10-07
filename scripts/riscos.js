@@ -1,10 +1,10 @@
 // ===================
-// RISCOS (gráfico + tabela)
+// RISCOS (somente tabela)
 // ===================
 const riscos = [
   {
     descricao: "Falha na integração com API de pagamento",
-    responsavel: "Carlos",
+    responsavel: "Matheus",
     probabilidade: "Alta",
     impacto: "Crítico",
     status: "Pendente",
@@ -12,7 +12,7 @@ const riscos = [
   },
   {
     descricao: "Atraso na entrega de funcionalidades",
-    responsavel: "Ana",
+    responsavel: "Daniel",
     probabilidade: "Média",
     impacto: "Alto",
     status: "Em Monitoramento",
@@ -20,7 +20,7 @@ const riscos = [
   },
   {
     descricao: "Problemas de performance no dashboard",
-    responsavel: "Daniel",
+    responsavel: "Gabriel",
     probabilidade: "Média",
     impacto: "Médio",
     status: "Em Andamento",
@@ -28,7 +28,7 @@ const riscos = [
   },
   {
     descricao: "Equipe indisponível em período crítico",
-    responsavel: "Fernanda",
+    responsavel: "Gestor",
     probabilidade: "Baixa",
     impacto: "Alto",
     status: "Mitigado",
@@ -36,24 +36,9 @@ const riscos = [
   },
 ];
 
-new Chart(document.getElementById("riscosChart"), {
-  type: "pie",
-  data: {
-    labels: ["Baixo", "Médio", "Alto"],
-    datasets: [
-      {
-        data: [
-          riscos.filter((r) => r.probabilidade === "Baixa").length,
-          riscos.filter((r) => r.probabilidade === "Média").length,
-          riscos.filter((r) => r.probabilidade === "Alta").length,
-        ],
-        backgroundColor: ["green", "yellow", "red"],
-      },
-    ],
-  },
-});
-
+// Montar tabela de riscos
 const riscosBody = document.getElementById("riscos-detalhados");
+
 riscos.forEach((r) => {
   const row = document.createElement("tr");
   row.innerHTML = `

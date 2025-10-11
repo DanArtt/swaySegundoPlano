@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "http://127.0.0.1:5000/tarefas";
+  const API_URL = "http://127.0.0.1:5001/tarefas";
 
   let tarefas = [];
   let tarefasOriginais = [];

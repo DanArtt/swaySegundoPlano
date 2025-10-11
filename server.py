@@ -3,6 +3,7 @@ from flask_cors import CORS
 import subprocess
 import json
 import sys
+import os
 sys.stdout.reconfigure(encoding='utf-8')
 
 app = Flask(__name__)
@@ -76,3 +77,5 @@ def gerar_licoes():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=True)
+
+    

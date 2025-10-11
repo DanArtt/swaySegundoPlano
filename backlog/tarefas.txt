@@ -14,10 +14,17 @@
     "tarefa": "Criar sistema de compras"
   },
   {
-    "tarefa": "Implementar cadastro de produtos",
+    "probabilidade": "Baixa",
     "responsavel": "Daniel",
-    "status": "Em Andamento",
     "risco": "Possível atraso na integração com DB",
+    "status": "Em Andamento",
+    "tarefa": "Implementar cadastro de produtos"
+  },
+  {
+    "tarefa": "Criar tela de login",
+    "responsavel": "Matheus",
+    "status": "Concluída",
+    "risco": "Atrasar a entrega",
     "probabilidade": "Baixa"
   }
 ]

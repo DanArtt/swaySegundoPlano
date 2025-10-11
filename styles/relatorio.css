@@ -11,11 +11,7 @@ body {
 
 main,
 .rel-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 150px;
+  margin-left: 200px;
   padding: 2rem;
   min-height: 100vh;
   width: calc(100% - 260px);
@@ -138,4 +134,41 @@ footer {
   font-size: 0.9rem;
   color: #94a3b8;
   border-top: 1px solid #334155;
+}
+
+.relatorio-box {
+  background-color: #1e1e2f;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 15px;
+  line-height: 1.6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.relatorio-box h1,
+.relatorio-box h2,
+.relatorio-box h3 {
+  color: #00bfff;
+  margin-top: 10px;
+}
+
+.relatorio-box li {
+  margin-left: 20px;
+}
+
+.loader {
+  margin: 10px auto;
+  border: 5px solid #ccc;
+  border-top: 5px solid #00bfff;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,0 +1,24 @@
+{
+  "nome": "E-commerce Smart",
+  "status": "Em andamento",
+  "progresso": "Qualquer porcentagem",
+  "equipe": [
+    "Daniel Andrade",
+    "Gabriel Leite",
+    "Matheus Campos"
+  ],
+  "metas": [
+    "Finalizar integração com o back-end",
+    "Publicar versão beta",
+    "Testes de performance"
+  ],
+  "concluidos": [
+    "Configuração do ambiente de desenvolvimento",
+    "Design da interface do usuário",
+    "Implementação do carrinho de compras"
+  ],
+  "dificuldades": [
+    "Integração com API de pagamentos",
+    "Ajustes de responsividade"
+  ]
+}

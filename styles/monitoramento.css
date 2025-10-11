@@ -128,3 +128,87 @@ footer {
   color: #94a3b8;
   border-top: 1px solid #334155;
 }
+
+/* ===== Cards KPI ===== */
+.cards-section {
+  display: flex;
+  gap: 18px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 8px;
+  margin-bottom: 22px;
+}
+
+.big-card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+  color: #e2e8f0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  min-height: 100px;
+}
+
+.big-card .valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 6px 0;
+}
+
+.big-card.purple {
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+}
+.big-card.blue {
+  background: linear-gradient(180deg, #071526, #081827);
+  border: 1px solid rgba(56, 189, 248, 0.08);
+}
+.big-card.green {
+  background: linear-gradient(180deg, #07120b, #081409);
+  border: 1px solid rgba(34, 197, 94, 0.06);
+}
+
+/* ===== Tabela de sprints ===== */
+.sprints-section {
+  margin-top: 28px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sprints-section table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e2e8f0;
+}
+
+.sprints-section th,
+.sprints-section td {
+  border-bottom: 1px solid #334155;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.sprints-section th {
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  main {
+    padding: 18px;
+    margin-left: 260px;
+  }
+  .cards-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

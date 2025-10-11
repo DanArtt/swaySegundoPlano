@@ -61,6 +61,7 @@ def gerar_relatorio(dados):
 def gerar_licoes(dados):
     prompt = f"""
     Gere uma seção de **Lições Aprendidas** com base nos seguintes dados JSON:
+    Por favor, não explane que estamos utilizando o Arquivo JSON. Fala que está consumindo os dados referente aos graficos e tabelas fornecidos nesses projetos.
 
     {json.dumps(dados, indent=2, ensure_ascii=False)}
 

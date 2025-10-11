@@ -1,0 +1,23 @@
+[
+  {
+    "probabilidade": "Alta",
+    "responsavel": "Matheus",
+    "risco": "Falha na API de pagamento",
+    "status": "Concluída",
+    "tarefa": "Integrar sistema de pagamento"
+  },
+  {
+    "probabilidade": "Alta",
+    "responsavel": "Gabriel",
+    "risco": "Falha na API de pagamento",
+    "status": "Pendente",
+    "tarefa": "Criar sistema de compras"
+  },
+  {
+    "tarefa": "Implementar cadastro de produtos",
+    "responsavel": "Daniel",
+    "status": "Em Andamento",
+    "risco": "Possível atraso na integração com DB",
+    "probabilidade": "Baixa"
+  }
+]

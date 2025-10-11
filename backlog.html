@@ -1,62 +1,110 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projeto Final - Gestão de Projetos</title>
-    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Dashboard de Gestão - E-commerce Smart</title>
     <link rel="stylesheet" href="./styles/backlog.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-
   <body>
     <header>
-      <div class="container">
+      <div class="container-navbar">
+        <!-- Topo -->
         <div class="container-logo">
           <a href="./index.html">
-            <img class="logo" src="./assets/LogoBranca.png" alt="" />
+            <img class="logo" src="./assets/LogoBranca.png" alt="Logo" />
           </a>
           <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
         </div>
-        <div class="container-navegacao">
-          <a class="navegacao" href="./backlog.html">Backlog</a>
-          <a class="navegacao" href="./monitoramento.html">Monitoramento</a>
-          <a class="navegacao" href="./relatorio.html">Relatorio</a>
-          <a class="navegacao" href="./cronograma.html">Cronograma</a>
-          <a class="navegacao" href="./riscos.html">Riscos</a>
+
+        <!-- Meio -->
+        <nav class="container-navegacao">
+          <a class="navegacao" href="./index.html">🏠 Dashboard</a>
+          <a class="navegacao" href="./relatorio.html">📊 Relatorio</a>
+          <a class="navegacao" href="./monitoramento.html">📡 Monitoramento</a>
+        </nav>
+
+        <!-- Rodapé -->
+        <div class="footer-text">
+          <p>
+            Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel
+            Leite, Matheus Campos
+          </p>
         </div>
       </div>
     </header>
 
-    <main>
-      <section>
-        <h2>Backlog</h2>
-        <canvas id="backlogChart"></canvas>
-      </section>
-      <section>
-        <h3>📋 Detalhamento das Tarefas</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Tarefa</th>
-              <th>Responsável</th>
-              <th>Status</th>
-              <th>Risco</th>
-              <th>Probabilidade</th>
-            </tr>
-          </thead>
-          <tbody id="backlog-detalhado">
-            <!-- preenchido via script.js -->
-<!--          </tbody>
-        </table>
+    <main class="content">
+      <!-- BackLog Detalhado -->
+      <section class="box">
+        <h2>📝 Detalhamento das Tarefas</h2>
+
+        <!-- Formulário CRUD -->
+        <form id="tarefaForm">
+          <div class="form-row">
+            <input type="text" id="tarefa" placeholder="Tarefa" required />
+            <input
+              type="text"
+              id="responsavel"
+              placeholder="Responsável"
+              required
+            />
+            <select id="status">
+              <option>Pendente</option>
+              <option>Em Andamento</option>
+              <option>Concluída</option>
+            </select>
+            <input type="text" id="risco" placeholder="Risco" />
+            <select id="probabilidade">
+              <option>Baixa</option>
+              <option>Média</option>
+              <option>Alta</option>
+            </select>
+            <button type="submit" id="btnSalvar">Adicionar</button>
+          </div>
+        </form>
+
+        <!-- Botão para organizar -->
+        <div class="organizar-container">
+          <button id="btnOrganizar">Organizar Tarefas</button>
+        </div>
+
+        <!-- Container principal (tabela + gráfico lado a lado) -->
+        <div class="tabela-grafico">
+          <table>
+            <thead>
+              <tr>
+                <th>Tarefa</th>
+                <th>Responsável</th>
+                <th>Status</th>
+                <th>Risco</th>
+                <th>Probabilidade</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="backlog-detalhado"></tbody>
+          </table>
+
+          <div class="grafico-container">
+            <h3>Status das Tarefas</h3>
+            <canvas id="backlogChart"></canvas>
+          </div>
+        </div>
       </section>
     </main>
-    <footer>
-      <p>
-        Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel Leite,
-        Matheus Campos
-      </p>
-    </footer>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmModal" class="modal-overlay hidden">
+      <div class="modal">
+        <h3>Excluir Tarefa</h3>
+        <p>Tem certeza que deseja excluir esta tarefa?</p>
+        <div class="modal-buttons">
+          <button id="cancelDelete" class="btn-cancel">Cancelar</button>
+          <button id="confirmDelete" class="btn-delete">Excluir</button>
+        </div>
+      </div>
+    </div>
+
     <script src="./scripts/backlog.js"></script>
   </body>
-</html> -->
+</html>

@@ -7,11 +7,11 @@
     "tarefa": "Integrar sistema de pagamento"
   },
   {
-    "probabilidade": "Alta",
+    "tarefa": "Criar sistema de compras",
     "responsavel": "Gabriel",
-    "risco": "Falha na API de pagamento",
     "status": "Pendente",
-    "tarefa": "Criar sistema de compras"
+    "risco": "Complexidade do CRUD",
+    "probabilidade": "Média"
   },
   {
     "probabilidade": "Baixa",
@@ -21,10 +21,10 @@
     "tarefa": "Implementar cadastro de produtos"
   },
   {
-    "tarefa": "Criar tela de login",
+    "probabilidade": "Baixa",
     "responsavel": "Matheus",
-    "status": "Concluída",
     "risco": "Atrasar a entrega",
-    "probabilidade": "Baixa"
+    "status": "Concluída",
+    "tarefa": "Criar tela de login"
   }
 ]

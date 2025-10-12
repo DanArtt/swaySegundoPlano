@@ -1,102 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projeto Final - Gestão de Projetos</title>
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/monitoramento.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <div class="container-navbar">
-        <div class="container-logo">
-          <a href="./index.html">
-            <img class="logo" src="./assets/LogoBranca.png" alt="Logo" />
-          </a>
-          <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Final - Gestão de Projetos</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/monitoramento.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-        <nav class="container-navegacao">
-          <a class="navegacao" href="./index.html">🏠 Dashboard</a>
-          <a class="navegacao" href="./relatorio.html">📊 Relatório</a>
-          <a class="navegacao" href="./backlog.html">📝 Backlog</a>
-        </nav>
+<body>
+  <header>
+    <div class="container-navbar">
+      <div class="container-logo">
+        <a href="./index.html">
+          <img class="logo" src="./assets/LogoBranca.png" alt="Logo" />
+        </a>
+        <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
+      </div>
 
-        <div class="footer-text">
-          <p>
-            Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel
-            Leite, Matheus Campos
-          </p>
+      <nav class="container-navegacao">
+        <a class="navegacao" href="./index.html">🏠 Dashboard</a>
+        <a class="navegacao" href="./relatorio.html">📊 Relatório</a>
+        <a class="navegacao" href="./backlog.html">📝 Backlog</a>
+      </nav>
+
+      <div class="footer-text">
+        <p>
+          Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel
+          Leite, Matheus Campos
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- KPIs dinâmicos -->
+    <section class="cards-section">
+      <div class="big-card purple">
+        <div>
+          <h3>⚡ Velocity</h3>
+          <p class="valor" id="velocity">0</p>
+          <span>Média das últimas sprints</span>
         </div>
       </div>
-    </header>
-
-    <main>
-      <!-- KPIs dinâmicos -->
-      <section class="cards-section">
-        <div class="big-card purple">
-          <div>
-            <h3>⚡ Velocity</h3>
-            <p class="valor" id="velocity">0</p>
-            <span>Média das últimas sprints</span>
-          </div>
+      <div class="big-card blue">
+        <div>
+          <h3>💰 CPI</h3>
+          <p class="valor" id="cpi">0</p>
+          <span>Índice de Custo</span>
         </div>
-        <div class="big-card blue">
-          <div>
-            <h3>💰 CPI</h3>
-            <p class="valor" id="cpi">0</p>
-            <span>Índice de Custo</span>
-          </div>
+      </div>
+      <div class="big-card green">
+        <div>
+          <h3>⏱️ SPI</h3>
+          <p class="valor" id="spi">0</p>
+          <span>Índice de Prazo</span>
         </div>
-        <div class="big-card green">
-          <div>
-            <h3>⏱️ SPI</h3>
-            <p class="valor" id="spi">0</p>
-            <span>Índice de Prazo</span>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Gráficos -->
-      <section class="charts-container">
-        <div class="chart-card">
-          <h2>📈 KPIs</h2>
-          <canvas id="kpisChart"></canvas>
-        </div>
+    <!-- Gráficos -->
+    <section class="charts-container">
+      <div class="chart-card">
+        <h2>📈 KPIs</h2>
+        <canvas id="kpisChart"></canvas>
+      </div>
 
-        <div class="chart-card">
-          <h2>📊 Monitoramento em Tempo Real</h2>
-          <canvas id="monitoramentoChart"></canvas>
-          <p>
-            O gráfico acima simula estoque, vendas e clientes ativos variando em
-            tempo real.
-          </p>
-        </div>
-      </section>
+      <div class="chart-card">
+        <h2>📊 Gráfico de Distribuição de Tempo</h2>
+        <canvas id="fasesChart" height="200"></canvas>
+      </div>
+    </section>
 
-      <!-- Tabela de sprints -->
-      <section class="sprints-section">
-        <h2>📅 Histórico de Sprints</h2>
-        <table id="tabelaSprints">
-          <thead>
-            <tr>
-              <th>Sprint</th>
-              <th>Início</th>
-              <th>Fim</th>
-              <th>Velocity</th>
-              <th>CPI</th>
-              <th>SPI</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </section>
-    </main>
+    <!-- Tabela de sprints -->
+    <section class="sprints-section">
+      <h2>📅 Histórico de Sprints</h2>
+      <table id="tabelaSprints">
+        <thead>
+          <tr>
+            <th>Sprint</th>
+            <th>Descrição</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Velocity</th>
+            <th>CPI</th>
+            <th>SPI</th>
+            <th>Status</th>
+          </tr>
+        </thead>
 
-    <script src="./scripts/monitoramento.js"></script>
-  </body>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="./scripts/monitoramento.js"></script>
+</body>
+
 </html>

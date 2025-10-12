@@ -1,266 +1,196 @@
-/* ==========================
-   Configuração de Datas
-   ========================== */
-const DATA_INICIO = new Date("2025-08-01T00:00:00");
-const DATA_FIM = new Date("2025-12-05T23:59:59");
-const HOJE = new Date();
+// ======================
+// MONITORAMENTO DE SPRINTS
+// ======================
 
-/* --------------------------
-   Parâmetros de simulação
-   -------------------------- */
-// Cada sprint dura 7 dias reais
-const DURACAO_SPRINT_MS = 7 * 24 * 60 * 60 * 1000;
+const API_URL = "http://localhost:5003/api/sprints";
 
-// Para simulação do monitoramento (gráfico de "tempo real")
-const SIMULACAO_MS = 10000;
+// ---------- instâncias globais de gráficos ----------
+let kpisChartInstance = null;
+let fasesChartInstance = null;
 
-/* --------------------------
-   Chart.js - KPIs e monitoramento
-   -------------------------- */
-const kpisCtx = document.getElementById("kpisChart").getContext("2d");
-const kpisChart = new Chart(kpisCtx, {
-  type: "line",
-  data: {
-    labels: [],
-    datasets: [
-      { label: "Velocity", data: [], borderColor: "#8b5cf6", fill: false },
-      { label: "CPI", data: [], borderColor: "#38bdf8", fill: false },
-      { label: "SPI", data: [], borderColor: "#22c55e", fill: false },
-    ],
-  },
-  options: { maintainAspectRatio: false },
-});
-
-const monitoramentoChart = new Chart(
-  document.getElementById("monitoramentoChart").getContext("2d"),
-  {
-    type: "line",
-    data: {
-      labels: ["t0"],
-      datasets: [
-        {
-          label: "Estoque Total",
-          data: [100],
-          borderColor: "#8b5cf6",
-          fill: false,
-        },
-        {
-          label: "Vendas do Dia",
-          data: [2],
-          borderColor: "#ef4444",
-          fill: false,
-        },
-        {
-          label: "Clientes Ativos",
-          data: [5],
-          borderColor: "#22c55e",
-          fill: false,
-        },
-      ],
-    },
-    options: { maintainAspectRatio: false },
-  }
-);
-
-/* ==========================
-   Estado local
-   ========================== */
-let historiaSprints = [];
-
-/* ==========================
-   Utilitárias
-   ========================== */
+// ---------- utilitário ----------
 function formatDateISO(dateStr) {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("pt-BR");
+  if (!dateStr) return "-";
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("pt-BR");
 }
 
-function statusFromDates(startIso, endIso) {
-  const start = new Date(startIso);
-  const end = new Date(endIso);
-  if (end < HOJE) return "✅ Concluída";
-  if (start <= HOJE && HOJE <= end) return "⚙️ Em andamento";
-  return "⏳ Pendente";
-}
-function average(arr) {
-  return arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
-}
-
-/* ==========================
-   Geração de sprints (quando não há arquivo no backend)
-   ========================== */
-function gerarSprintsEntreDatas() {
-  const sprints = [];
-  let index = 1;
-  let inicio = new Date(DATA_INICIO.getTime());
-
-  while (inicio <= DATA_FIM) {
-    const fim = new Date(inicio.getTime() + DURACAO_SPRINT_MS - 1);
-    if (fim > DATA_FIM) {
-      // ajusta o fim da última sprint para DATA_FIM
-      fim.setTime(DATA_FIM.getTime());
-    }
-
-    // gerar KPIs simulados (valores plausíveis)
-    const velocity = parseFloat((12 + Math.random() * 8).toFixed(2)); // 12..20
-    const cpi = parseFloat((0.9 + Math.random() * 0.3).toFixed(2)); // 0.9..1.2
-    const spi = parseFloat((0.85 + Math.random() * 0.35).toFixed(2)); // 0.85..1.2
-
-    const sprint = {
-      nome: `Sprint ${index}`,
-      dataInicio: inicio.toISOString(),
-      dataFim: fim.toISOString(),
-      velocity,
-      cpi,
-      spi,
-      status: statusFromDates(inicio.toISOString(), fim.toISOString()),
-    };
-
-    sprints.push(sprint);
-
-    // próxima sprint
-    inicio = new Date(inicio.getTime() + DURACAO_SPRINT_MS);
-    index++;
-  }
-
-  return sprints;
-}
-
-/* ==========================
-   Integração com backend Flask
-   Endpoints esperados:
-     GET  /api/sprints  -> retorna array de sprints
-     POST /api/sprints  -> recebe array JSON e salva
-   ========================== */
-async function fetchSprintsFromServer() {
+// ---------- carregamento ----------
+async function carregarSprints() {
   try {
-    const res = await fetch("/api/sprints");
-    if (!res.ok) {
-      console.warn("GET /api/sprints retornou não ok:", res.status);
-      return null;
-    }
-    const data = await res.json();
-    if (!Array.isArray(data) || data.length === 0) return null;
-    // atualiza status baseado na data atual (por segurança)
-    data.forEach((s) => {
-      s.status = statusFromDates(s.dataInicio, s.dataFim);
-    });
-    return data;
-  } catch (err) {
-    console.error("Erro ao buscar sprints do servidor:", err);
-    return null;
+    const response = await fetch(API_URL);
+    const sprints = await response.json();
+    if (!Array.isArray(sprints)) throw new Error("Formato inválido");
+
+    atualizarTabela(sprints);
+    atualizarKPIs(sprints);
+    atualizarGraficoKPIs(sprints);
+    atualizarGraficoFases(sprints);
+  } catch (error) {
+    console.error("Erro ao carregar sprints:", error);
   }
 }
 
-async function saveSprintsToServer(sprints) {
-  try {
-    const res = await fetch("/api/sprints", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(sprints),
-    });
-    if (!res.ok) {
-      console.warn("POST /api/sprints retornou não ok:", res.status);
-    } else {
-      console.log("Sprints salvas no servidor com sucesso.");
-    }
-  } catch (err) {
-    console.error("Erro ao salvar sprints no servidor:", err);
-  }
-}
-
-/* ==========================
-   Atualização da UI
-   ========================== */
-function atualizarCardsFromHistory() {
-  // usa média das últimas 5 sprints para mostrar KPIs
-  const velocities = historiaSprints.map((s) => s.velocity);
-  const cpis = historiaSprints.map((s) => s.cpi);
-  const spis = historiaSprints.map((s) => s.spi);
-
-  const velAvg = average(velocities.slice(-5));
-  const cpiAvg = average(cpis.slice(-5));
-  const spiAvg = average(spis.slice(-5));
-
-  document.getElementById("velocity").textContent = velAvg
-    ? velAvg.toFixed(2)
-    : "0";
-  document.getElementById("cpi").textContent = cpiAvg ? cpiAvg.toFixed(2) : "0";
-  document.getElementById("spi").textContent = spiAvg ? spiAvg.toFixed(2) : "0";
-}
-
-function rebuildKpisChart() {
-  kpisChart.data.labels = historiaSprints.map((s) => s.nome);
-  kpisChart.data.datasets[0].data = historiaSprints.map((s) => s.velocity);
-  kpisChart.data.datasets[1].data = historiaSprints.map((s) => s.cpi);
-  kpisChart.data.datasets[2].data = historiaSprints.map((s) => s.spi);
-  kpisChart.update();
-}
-
-function rebuildSprintsTable() {
+// ---------- tabela ----------
+function atualizarTabela(sprints) {
   const tbody = document.querySelector("#tabelaSprints tbody");
   tbody.innerHTML = "";
-  // mostra as sprints em ordem decrescente (mais recentes em cima)
-  const rows = [...historiaSprints].reverse();
-  rows.forEach((s) => {
+  sprints.forEach((sprint) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${s.nome}</td>
-      <td>${formatDateISO(s.dataInicio)}</td>
-      <td>${formatDateISO(s.dataFim)}</td>
-      <td>${s.velocity.toFixed(2)}</td>
-      <td>${s.cpi.toFixed(2)}</td>
-      <td>${s.spi.toFixed(2)}</td>
-      <td>${s.status}</td>
+      <td>${sprint.nome}</td>
+      <td>${sprint.descricao || "-"}</td>
+      <td>${formatDateISO(sprint.dataInicio)}</td>
+      <td>${formatDateISO(sprint.dataFim)}</td>
+      <td>${sprint.velocity?.toFixed(2) ?? "-"}</td>
+      <td>${sprint.cpi?.toFixed(2) ?? "-"}</td>
+      <td>${sprint.spi?.toFixed(2) ?? "-"}</td>
+      <td>${sprint.status}</td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-/* ==========================
-   Simulação do gráfico em tempo real
-   ========================== */
-function simularEvolucaoRealTime() {
-  const labels = monitoramentoChart.data.labels;
-  const estoque = monitoramentoChart.data.datasets[0].data;
-  const vendas = monitoramentoChart.data.datasets[1].data;
-  const clientes = monitoramentoChart.data.datasets[2].data;
-  labels.push("t" + labels.length);
-  estoque.push(Math.max(0, estoque.at(-1) - Math.random() * 3));
-  vendas.push(Math.max(0, vendas.at(-1) + (Math.random() * 4 - 1)));
-  clientes.push(Math.max(0, clientes.at(-1) + (Math.random() * 10 - 5)));
-  monitoramentoChart.update();
+// ---------- KPIs ----------
+function atualizarKPIs(sprints) {
+  const concluidas = sprints.filter((s) => s.status === "✅ Concluída");
+  const emAndamento = sprints.filter((s) => s.status === "⚙️ Em andamento");
+
+  const velocity =
+    concluidas.length > 0
+      ? concluidas.reduce((acc, s) => acc + (s.velocity || 0), 0) /
+        concluidas.length
+      : 0;
+
+  const cpi =
+    concluidas.length > 0
+      ? concluidas.reduce((acc, s) => acc + (s.cpi || 0), 0) / concluidas.length
+      : 0;
+
+  const spi =
+    concluidas.length + emAndamento.length > 0
+      ? [...concluidas, ...emAndamento].reduce(
+          (acc, s) => acc + (s.spi || 0),
+          0
+        ) /
+        (concluidas.length + emAndamento.length)
+      : 0;
+
+  document.getElementById("velocity").textContent = velocity.toFixed(2);
+  document.getElementById("cpi").textContent = cpi.toFixed(2);
+  document.getElementById("spi").textContent = spi.toFixed(2);
 }
 
-/* ==========================
-   Inicialização principal
-   ========================== */
-(async function init() {
-  // Tenta carregar do servidor
-  let sprintsServer = await fetchSprintsFromServer();
+// ---------- gráfico de KPIs ----------
+function atualizarGraficoKPIs(sprints) {
+  const ctx = document.getElementById("kpisChart").getContext("2d");
+  const concluidas = sprints.filter((s) => s.status === "✅ Concluída");
 
-  if (sprintsServer && sprintsServer.length) {
-    historiaSprints = sprintsServer;
-  } else {
-    // gera sprints localmente e salva no servidor
-    historiaSprints = gerarSprintsEntreDatas();
-    await saveSprintsToServer(historiaSprints);
+  const labels = concluidas.map((s) => s.nome);
+  const velocityData = concluidas.map((s) => s.velocity);
+  const cpiData = concluidas.map((s) => s.cpi);
+  const spiData = concluidas.map((s) => s.spi);
+
+  // destrói instância anterior (se existir)
+  if (kpisChartInstance) {
+    kpisChartInstance.destroy();
+    kpisChartInstance = null;
   }
 
-  // garantir que os status estejam atualizados (caso o arquivo exista mas esteja desatualizado)
-  historiaSprints.forEach((s) => {
-    s.status = statusFromDates(s.dataInicio, s.dataFim);
+  kpisChartInstance = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        { label: "Velocity", data: velocityData, backgroundColor: "#8b5cf6" },
+        { label: "CPI", data: cpiData, backgroundColor: "#3b82f6" },
+        { label: "SPI", data: spiData, backgroundColor: "#10b981" },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: { y: { beginAtZero: true } },
+      plugins: {
+        legend: { labels: { color: "#e2e8f0" } },
+        tooltip: { mode: "nearest", intersect: false },
+      },
+    },
+  });
+}
+
+// ---------- gráfico de distribuição por fase ----------
+function atualizarGraficoFases(sprints) {
+  const ctx = document.getElementById("fasesChart").getContext("2d");
+
+  // Considera apenas concluídas e em andamento
+  const sprintsValidas = sprints.filter(
+    (s) => s.status === "✅ Concluída" || s.status === "⚙️ Em andamento"
+  );
+
+  const tempoPorFase = {};
+
+  sprintsValidas.forEach((s) => {
+    const fase = s.categoria || "Outros";
+    const inicio = new Date(s.dataInicio);
+    const fim = new Date(s.dataFim);
+    const dias = (fim - inicio) / (1000 * 60 * 60 * 24) + 1;
+    tempoPorFase[fase] = (tempoPorFase[fase] || 0) + dias;
   });
 
-  // atualiza UI
-  rebuildKpisChart();
-  rebuildSprintsTable();
-  atualizarCardsFromHistory();
+  const labels = Object.keys(tempoPorFase);
+  const data = Object.values(tempoPorFase);
 
-  // Atualiza o gráfico de monitoramento em tempo real
-  setInterval(simularEvolucaoRealTime, 3000);
+  // destrói instância anterior (se existir)
+  if (fasesChartInstance) {
+    fasesChartInstance.destroy();
+    fasesChartInstance = null;
+  }
 
-  // Se você quiser regenerar e re-salvar sprints (por exemplo para testes), descomente:
-  // const novo = gerarSprintsEntreDatas();
-  // await saveSprintsToServer(novo);
-})();
+  fasesChartInstance = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Tempo total por fase (dias)",
+          data,
+          backgroundColor: [
+            "#facc15", // Documentação
+            "#3b82f6", // Planejamento
+            "#8b5cf6", // Design
+            "#10b981", // Desenvolvimento
+            "#f97316", // Testes
+            "#ef4444", // Entrega
+          ],
+          borderRadius: 6,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: "nearest",
+          intersect: false,
+        },
+      },
+      scales: {
+        x: {
+          beginAtZero: true,
+          ticks: { color: "#e2e8f0" },
+          grid: { color: "#334155" },
+        },
+        y: {
+          ticks: { color: "#e2e8f0" },
+          grid: { color: "#334155" },
+        },
+      },
+    },
+  });
+}
+
+// ---------- inicialização ----------
+document.addEventListener("DOMContentLoaded", carregarSprints);

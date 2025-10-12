@@ -240,7 +240,8 @@ header {
 
 /* Tabelas */
 .box {
-  background: #1e293b;
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
   padding: 20px;
   border-radius: 14px;
 }

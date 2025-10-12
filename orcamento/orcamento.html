@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard de Gestão - E-commerce Smart</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="orcamento.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container-navbar">
+      <!-- Topo -->
+      <div class="container-logo">
+        <a href="./index.html">
+          <img class="logo" src="./assets/LogoBranca.png" alt="Logo" />
+        </a>
+        <h1 class="titulo">E-commerce Smart - Gestão de Projetos</h1>
+      </div>
+
+      <!-- Meio -->
+      <nav class="container-navegacao">
+        <a class="navegacao" href="../index.html">🏠 Dashboard</a>
+        <a class="navegacao" href="../monitoramento/monitoramento.html">📡 Monitoramento</a>
+        <a class="navegacao" href="../relatorio/relatorio.html">📊 Relatorio</a>
+        <a class="navegacao" href="./backlog/backlog.html">📝 Backlog</a>
+      </nav>
+
+      <!-- Rodapé -->
+      <div class="footer-text">
+        <p>
+          Trabalho de Gestão de Projetos - ADS - Daniel Andrade, Gabriel
+          Leite, Matheus Campos
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+
+
+    <section class="box orcamento-box">
+      <h2>💰 Painel de Orçamento do Projeto</h2>
+
+      <!-- Resumo em cards -->
+      <div class="orcamento-resumo">
+        <div class="orcamento-card">
+          <h3>Orçamento Total</h3>
+          <p id="orcamento-total">R$ 0,00</p>
+        </div>
+        <div class="orcamento-card">
+          <h3>Gasto Atual</h3>
+          <p id="orcamento-gasto">R$ 0,00</p>
+        </div>
+        <div class="orcamento-card">
+          <h3>Saldo Restante</h3>
+          <p id="orcamento-restante">R$ 0,00</p>
+        </div>
+      </div>
+
+      <!-- Barra de progresso -->
+      <div class="orcamento-progresso-container">
+        <div id="orcamento-progresso" class="orcamento-progresso-barra">0%</div>
+      </div>
+
+      <!-- Tabela detalhada -->
+      <h3>📊 Detalhamento de Custos</h3>
+      <table class="orcamento-tabela">
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th>Descrição</th>
+            <th>Valor Diário (R$)</th>
+            <th>Gasto Total (R$)</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-custos"></tbody>
+      </table>
+    </section>
+
+    <div class="graficos-lado-a-lado">
+      <section class="box grafico-box">
+        <h2>📈 Projeção de Gastos Futuros</h2>
+        <canvas id="graficoProjecao"></canvas>
+        <p id="textoProjecao" class="texto-projecao"></p>
+      </section>
+
+      <section class="box orcamento-historico">
+        <h2>📈 Evolução dos Gastos ao Longo do Tempo</h2>
+        <canvas id="grafico-historico"></canvas>
+        <p id="textoHistorico" class="texto-projecao"></p>
+
+      </section>
+    </div>
+
+  </main>
+
+  <script src="orcamento.js"></script>
+</body>
+
+</html>

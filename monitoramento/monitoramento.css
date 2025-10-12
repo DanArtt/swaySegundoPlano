@@ -47,7 +47,8 @@ h2 {
   flex: 1 1 0;
   max-width: calc(100% - 15px);
   /* garante dois cards alinhados lado a lado */
-  background: #1e293b;
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
   padding: 35px;
   border-radius: 14px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
@@ -123,13 +124,14 @@ h2 {
 }
 
 .big-card.purple {
-  background: linear-gradient(180deg, #0b1220, #091129);
-  border: 1px solid rgba(139, 92, 246, 0.08);
+  background: linear-gradient(180deg, #071526, #081827);
+  border: 1px solid rgba(56, 189, 248, 0.08);
+
 }
 
 .big-card.blue {
-  background: linear-gradient(180deg, #071526, #081827);
-  border: 1px solid rgba(56, 189, 248, 0.08);
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
 }
 
 .big-card.green {

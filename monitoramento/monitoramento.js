@@ -59,7 +59,7 @@ function atualizarKPIs(sprints) {
   const velocity =
     concluidas.length > 0
       ? concluidas.reduce((acc, s) => acc + (s.velocity || 0), 0) /
-        concluidas.length
+      concluidas.length
       : 0;
 
   const cpi =
@@ -70,10 +70,10 @@ function atualizarKPIs(sprints) {
   const spi =
     concluidas.length + emAndamento.length > 0
       ? [...concluidas, ...emAndamento].reduce(
-          (acc, s) => acc + (s.spi || 0),
-          0
-        ) /
-        (concluidas.length + emAndamento.length)
+        (acc, s) => acc + (s.spi || 0),
+        0
+      ) /
+      (concluidas.length + emAndamento.length)
       : 0;
 
   document.getElementById("velocity").textContent = velocity.toFixed(2);
@@ -102,20 +102,32 @@ function atualizarGraficoKPIs(sprints) {
     data: {
       labels,
       datasets: [
-        { label: "Velocity", data: velocityData, backgroundColor: "#8b5cf6" },
-        { label: "CPI", data: cpiData, backgroundColor: "#3b82f6" },
-        { label: "SPI", data: spiData, backgroundColor: "#10b981" },
+        { label: "Velocity", data: velocityData, backgroundColor: "#8b5cf681" },
+        { label: "CPI", data: cpiData, backgroundColor: "#3b82f681" },
+        { label: "SPI", data: spiData, backgroundColor: "#10b98181" },
       ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: { y: { beginAtZero: true } },
-      plugins: {
-        legend: { labels: { color: "#e2e8f0" } },
-        tooltip: { mode: "nearest", intersect: false },
+      scales: {
+        x: {
+          ticks: { color: "#ffffff" },   // ✅ textos brancos no eixo X
+          grid: { color: "rgba(255,255,255,0.2)" } // ✅ linhas brancas suaves
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: "#ffffff" },   // ✅ textos brancos no eixo Y
+          grid: { color: "rgba(255,255,255,0.2)" } // ✅ linhas brancas suaves
+        }
       },
-    },
+      plugins: {
+        legend: { labels: { color: "#ffffff" } }, // ✅ legenda branca
+        tooltip: { mode: "nearest", intersect: false },
+
+      }
+    }
+
   });
 }
 
@@ -156,12 +168,12 @@ function atualizarGraficoFases(sprints) {
           label: "Tempo total por fase (dias)",
           data,
           backgroundColor: [
-            "#facc15", // Documentação
-            "#3b82f6", // Planejamento
-            "#8b5cf6", // Design
-            "#10b981", // Desenvolvimento
-            "#f97316", // Testes
-            "#ef4444", // Entrega
+            "#facc1581", // Documentação
+            "#3b82f681", // Planejamento
+            "#8b5cf681", // Design
+            "#10b98181", // Desenvolvimento
+            "#f9731681", // Testes
+            "#ef444481", // Entrega
           ],
           borderRadius: 6,
         },
@@ -171,24 +183,24 @@ function atualizarGraficoFases(sprints) {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false },
-        tooltip: {
-          mode: "nearest",
-          intersect: false,
+        legend: {
+          labels: { color: "#ffffff" } 
         },
+        tooltip: { mode: "nearest", intersect: false },
+
       },
       scales: {
         x: {
-          beginAtZero: true,
-          ticks: { color: "#e2e8f0" },
-          grid: { color: "#334155" },
+          ticks: { color: "#ffffff" },              
+          grid: { color: "rgba(255,255,255,0.2)" }  
         },
         y: {
-          ticks: { color: "#e2e8f0" },
-          grid: { color: "#334155" },
-        },
-      },
-    },
+          ticks: { color: "#ffffff" },              
+          grid: { color: "rgba(255,255,255,0.2)" }  
+        }
+      }
+    }
+
   });
 }
 

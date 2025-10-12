@@ -3,7 +3,8 @@
 ============================ */
 
 .orcamento-box {
-  background: #1e293b;
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
   padding: 25px;
   border-radius: 14px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
@@ -96,3 +97,68 @@
 .orcamento-tabela td {
   color: #f1f5f9;
 }
+
+.grafico-box {
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.grafico-box h2 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+.texto-projecao {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.orcamento-historico {
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.orcamento-historico h2 {
+  color: #38bdf8;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
+}
+
+.graficos-lado-a-lado {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap; /* permite quebrar em telas pequenas */
+}
+
+.graficos-lado-a-lado .box {
+  flex: 1;
+  min-width: 450px; /* largura mínima para manter formato */
+}
+
+
+.graficos-lado-a-lado .texto-projecao {
+  margin-top: auto; /* empurra para o fim sem aumentar o card */
+}
+
+.texto-grafico {
+  color: #cbd5e1;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+

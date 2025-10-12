@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         datasets: [
           {
             data: Object.values(statusContagem),
-            backgroundColor: ["#f1c40f", "#3498db", "#2ecc71"],
+            backgroundColor: ["#f1c40f81", "#3498db81", "#2ecc7181"],
           },
         ],
       },

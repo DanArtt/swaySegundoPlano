@@ -39,7 +39,8 @@ main,
 
 .rel-btn {
   padding: 0.8rem 1.6rem;
-  background: linear-gradient(135deg, #0ea5e9, #0369a1);
+  background: linear-gradient(135deg, #4f51f0, #1a1ef5);
+  background-color: #6366f1;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -51,7 +52,7 @@ main,
 }
 
 .rel-btn:hover {
-  background: linear-gradient(135deg, #0284c7, #075985);
+  background: linear-gradient(135deg, #40419b, #1114a3);
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
 }
@@ -69,7 +70,8 @@ main,
 
 /* Card dos relatórios */
 .rel-card {
-  background: #1e293b;
+  background: linear-gradient(180deg, #0b1220, #091129);
+  border: 1px solid rgba(139, 92, 246, 0.08);
   border-radius: 14px;
   padding: 1.8rem 2rem;
   width: 100%;

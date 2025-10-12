@@ -29,9 +29,17 @@ O sistema foi dividido em **módulos integrados**, cada um representando uma ár
 - Exibição em **cards interativos** e **gráficos de desempenho**.
 
 ### 💰 Orçamento
-- Simulação de **orçamento total e custos diários** com equipe e ferramentas.
-- Cálculo de **gasto acumulado**, **saldo restante** e **percentual do orçamento utilizado**.
-- Barra de progresso dinâmica com alertas visuais de uso de orçamento.
+- Simula **custos diários fixos** da equipe e ferramentas utilizadas.  
+- Calcula automaticamente:
+  - **Gasto acumulado** desde o início do projeto.  
+  - **Saldo restante** e **porcentagem do orçamento utilizado**.  
+  - **CPI (Cost Performance Index)** com base no progresso físico das sprints.  
+- Exibe dois **gráficos dinâmicos**:
+  - **Projeção de Gastos Futuros** – mostra quando o orçamento será atingido com base no ritmo atual.  
+  - **Histórico de Gastos Diários e Semanais** – compara a evolução dos custos ao longo do tempo.  
+- Inclui **textos explicativos automáticos** abaixo dos gráficos, interpretando os resultados e tendências financeiras.  
+
+Esse módulo conecta dados em tempo real com a **API Flask**, oferecendo uma visão clara da **saúde financeira do projeto** e auxiliando na tomada de decisão quanto à **alocação de recursos e controle de custos**.
 
 ### 🤖 Relatórios e Lições Aprendidas (IA)
 - Integração com API Flask que utiliza **inteligência artificial** para gerar:
